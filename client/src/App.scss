@@ -1,25 +1,28 @@
 body {
   font-family: "Muli", sans-serif;
   font-weight: 300;
-  background-color: #e2e8f0;
-  padding: 40px;
+  background-color: #e7f0e2;
+  padding: 0px;
+  background-image: url(../public/background.jpeg);
+  background-size: cover;
+  font-family: "Roboto Slab", serif;
 }
 
 label {
   display: flex;
   flex-direction: column;
   letter-spacing: 0.05rem;
-  font-size: .8em;
+  font-size: 0.8em;
   font-weight: 400;
   color: #222;
 }
 
 .app {
   display: flex;
-  max-width: 1400px;
+  max-width: 2000px;
   flex-wrap: wrap;
   gap: 12px;
-  margin: 0 auto;
+  margin: 200px auto;
 }
 
 .container {
@@ -46,11 +49,11 @@ input {
   border: 1px solid rgb(226, 232, 240);
   background-color: #fdfdfe;
   padding-inline-start: 0.75rem;
-  font-size: 0.875rem;
+  font-family: "Roboto Slab", serif;
 }
 
 .button {
-  background-color: #319795;
+  background-color: #d61295;
   border-radius: 0.125rem;
   padding: 10px 20px;
   color: white;
@@ -58,9 +61,10 @@ input {
   text-transform: uppercase;
   letter-spacing: 1px;
   font-weight: 400;
-  font-size: .9em;
+  font-size: 0.9em;
   &:hover {
     cursor: pointer;
+    background-color: #7712d6;
   }
 }
 
@@ -72,12 +76,22 @@ input {
     text-transform: uppercase;
     letter-spacing: 1px;
     font-weight: 400;
-    font-size: .9em;
+    font-size: 0.9em;
     display: inline-flex;
     margin-top: 10px;
     padding: 0.75rem;
     background-color: #f4f6f8;
   }
+}
+
+.signature {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 400;
+  font-size: 0.9em;
+  margin-top: 10px;
+  padding: 0.75rem;
+  background-color: #f4f6f8;
 }
 
 .transfer {
