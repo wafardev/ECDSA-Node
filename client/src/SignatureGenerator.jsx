@@ -4,6 +4,7 @@ import { utf8ToBytes } from "ethereum-cryptography/utils";
 import { sign } from "ethereum-cryptography/secp256k1";
 import { toHex } from "ethereum-cryptography/utils";
 import { hexToBytes } from "ethereum-cryptography/utils";
+import * as config from "./config";
 
 function SignatureGenerator({
   privateKey,
@@ -31,16 +32,24 @@ function SignatureGenerator({
       const formattedPrivateKey = privateKey.startsWith("0x")
         ? hexToBytes(privateKey.slice(2))
         : hexToBytes(privateKey);
-      console.log(messageHash);
-      console.log(formattedPrivateKey);
       const signTx = await sign(messageHash, formattedPrivateKey, {
         recovered: true,
       });
-      console.log(signTx);
       const serializedSignature = toHex(signTx[0]) + signTx[1];
-      console.log(serializedSignature);
 
-      setSignature(serializedSignature);
+      let info = config.getRandomInfo();
+      config.updateRandomInfo({
+        nonce: Math.floor(Math.random() * 900 + 100),
+        position: Math.floor(Math.random() * (serializedSignature.length - 1)),
+      });
+      info = config.getRandomInfo();
+
+      const modifiedSignatureHash =
+        serializedSignature.slice(0, info.position) +
+        info.nonce +
+        serializedSignature.slice(info.position);
+
+      setSignature(modifiedSignatureHash);
     } catch (error) {
       console.error("Error signing the message:", error.message);
     }

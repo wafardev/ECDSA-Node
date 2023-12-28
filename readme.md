@@ -119,3 +119,17 @@ async function signMessage(evt) {
 
 These components collectively create a simple Ethereum wallet application with features for balance checking, transfers, and message signing.
 ```
+
+## Upgrade to v2 - Enhanced Security Measures
+
+### Notable Features:
+
+1. Random Nonce Inclusion
+   To fortify the integrity of the centralized node, a unique nonce between 100 and 999 is generated for each signature. This nonce serves as a unique variable for each transaction, making it significantly more challenging for malicious actors to replicate or reuse transactions.
+
+2. Random Positioning
+   The chosen nonce is placed at a random position within the signature hash. This dynamic positioning ensures that each signature is unique and resistant to replay attacks.
+
+Considerations:
+Scalability Impact
+While this innovative security measure markedly improves the robustness of our system, it's important to note that the scalability of the system may be affected. The current implementation allows for the signing of only one transaction at a time. After each signature, a new nonce is set, contributing to a more secure environment but potentially limiting the system's ability to handle a high volume of concurrent signatures.
